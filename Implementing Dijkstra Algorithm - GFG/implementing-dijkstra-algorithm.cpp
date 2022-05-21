@@ -11,31 +11,24 @@ class Solution
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
         // Code here
+        queue<int>q;
+        q.push(S);
         vector<int>dist(V,INT_MAX);
-        dist[S]=0;
-        vector<bool>visited(V,false);
-        for(int count=0;count<V-1;count++)
-        {
-            int u=-1;
-            for(int i=0;i<V;i++)
-            {
-                if(visited[i]==false && (u==-1 || dist[i]<dist[u]))
-                {
-                    u=i;
-                }
-            }
-            visited[u] = true;
-            for(auto v:adj[u])
-            {
-                if(!visited[v[0]] && dist[v[0]]>dist[u] + v[1])
-                {
-                    dist[v[0]] = dist[u] + v[1];
+        dist[S] = 0;
+        while(!q.empty()){
+            int prev = q.front();
+            q.pop();
+            for(auto it : adj[prev]){
+                int node = it[0];
+                int d = it[1];
+                if(dist[node] > dist[prev] + d){
+                    dist[node] = dist[prev] + d;
+                    q.push(node);
                 }
             }
         }
         return dist;
     }
-    
 };
 
 
