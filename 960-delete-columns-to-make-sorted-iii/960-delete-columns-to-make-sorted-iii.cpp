@@ -26,3 +26,5 @@ public:
         return n - res;
     }
 };
+
+//For each position i,we track the maximum increasing subsequence. To do that, we analyze all j < i, and if A[j] < A[i] for all strings , then dp[i] = dp[j] + 1.The runtime complexity is O(n * n * m), where n is the number of characters, and m is the number of strings.
