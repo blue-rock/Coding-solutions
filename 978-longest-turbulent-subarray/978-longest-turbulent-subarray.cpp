@@ -3,7 +3,6 @@ public:
     int maxTurbulenceSize(vector<int>& arr) {
         int n = arr.size();
         vector<int>dp(n,1);
-        dp[0]=1;
         int flag = -1; 
         for(int i=1;i<n;i++)
         {
