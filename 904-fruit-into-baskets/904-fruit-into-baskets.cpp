@@ -1,37 +1,48 @@
 class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
-        int lastfruit = -1;
-        int secondlastfruit = -1;
-        int lastfruitcount = 0;
-        int currmax = 0;
-        int maxv= 0;
-        
-        for(auto fruit:fruits)
+        int first=-1,second=-1,fsi=0,ssi;
+        int n=fruits.size();
+        int sum=0,ans=0;
+        for(int i=0;i<n;i++)
         {
-            if(fruit==lastfruit || fruit==secondlastfruit)
+            if(first==-1)
             {
-                currmax++;
+                first=fruits[i];
+                fsi=i;
+                sum++;
+            }
+            else if(fruits[i]!=first && second==-1)
+            {
+                second=fruits[i];
+                ssi=i;
+                sum++;
+            }
+            else if(fruits[i]==first || fruits[i]==second)
+            {
+                if(fruits[i]==first)
+                    fsi=i;
+                else
+                    ssi=i;
+                sum++;
             }
             else
             {
-                currmax = lastfruitcount+1;
+                if(fruits[i-1]!=first)
+                {
+                    first=fruits[i];
+                    sum=i-fsi;
+                    fsi=i;
+                }
+                else
+                {
+                    second=fruits[i];
+                    sum=i-ssi;
+                    ssi=i;
+                }
             }
-            if(fruit==lastfruit)
-            {
-                lastfruitcount++;
-            }
-            else
-            {
-                lastfruitcount=1;
-            }
-            if(fruit!=lastfruit)
-            {
-                secondlastfruit=lastfruit;
-                lastfruit = fruit;
-            }
-            maxv = max(maxv,currmax);
+            ans=max(ans,sum);
         }
-        return maxv;
+        return ans;
     }
 };
