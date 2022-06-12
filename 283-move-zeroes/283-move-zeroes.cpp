@@ -8,12 +8,12 @@ public:
             if(nums[i]!=0)
             {
                 nums[j] = nums[i];
+                if(i!=j)
+                {
+                    nums[i]=0;
+                }
                 j++;
             }
-        }
-        for(int i=j;i<n;i++)
-        {
-            nums[i] = 0;
         }
     }
 };
