@@ -17,6 +17,7 @@ public:
         for(int i=0;i<n;i++)
         {
             string word = words[i];
+            cout<<word<<endl;
             int curr = 1;
             for(int j=0;j<word.length();j++)
             {
