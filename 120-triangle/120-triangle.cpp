@@ -14,3 +14,4 @@ public:
         return dp[0];
     }
 };
+//other sol possible
