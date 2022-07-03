@@ -9,16 +9,8 @@ class Solution{
     // arr: input array
     // n: size of array
     //Function to find the sum of contiguous subarray with maximum sum.
-    int max(int a,int b)
-    {
-        if(a>b)
-        {
-            return a;
-        }
-        return b;
-    }
     long long maxSubarraySum(int arr[], int n){
-        long long sum = INT_MIN;
+        int sum = INT_MIN;
         int curr = 0;
         for(int i=0;i<n;i++)
         {
