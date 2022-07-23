@@ -11,62 +11,52 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* finolans = new ListNode();
-        ListNode* head = finolans;
-        int carry = 0;
-        while(l1 || l2)
-        {
-            int val1=0;
-            int val2=0;
-            if(l1!=NULL)
-            {
-               val1 = l1->val; 
-            }
-            if(l2!=NULL)
-            {
-               val2 = l2->val; 
-            }
-            int sum = val1 + val2 + carry;
-            if(sum>9)
-            {
-                if(finolans==NULL)
-                {
-                    finolans = new ListNode(sum%10);
-                }
-                else
-                {
-                finolans->next=new ListNode(sum%10);
-                finolans = finolans->next;
-                }
-            }
-            else
-            {
-                if(finolans==NULL)
-                {
-                    finolans = new ListNode(sum);
-                }
-                else
-                {
-                finolans->next=new ListNode(sum);
-                finolans = finolans->next;
-                }
-            }
-            if(l1!=NULL)
-            {
-                l1 = l1->next;
-            }
-            if(l2!=NULL)
-            {
-                l2 = l2->next;
-            }
-            carry = sum/10;
-        }
-            if(carry)
-            {
-                ListNode* f=finolans;
-                f->next=new ListNode(carry);
-            }
         
-            return head->next;
+        ListNode* curr = new ListNode() ;
+        ListNode* head = curr  ;
+        int carry = 0 ;
+        while (l1 or l2)
+        {
+            int val1 = 0 ;
+            int val2 = 0;
+            if (l1)
+            {
+              val1 = l1 -> val ;   
+            }
+            if (l2)
+            {
+                val2 = l2 -> val ;
+            }
+            
+            int sum = val1 + val2  + carry ;
+                if (!curr)
+                {
+                    curr = new ListNode(sum%10) ;
+                }
+                else
+                {
+                    curr -> next = new ListNode(sum%10) ;
+                    curr = curr -> next ;
+                }
+            carry = sum/10 ;
+            
+            if (l1)
+            {
+                l1 = l1 -> next ;
+            }
+            
+            if (l2)
+            {
+                l2 = l2 -> next ;
+            }
+        }
+        
+        if (carry)
+        {
+            ListNode* f = new ListNode(carry) ;
+            curr -> next = f ;
+        }
+        
+        return head -> next ;
     }
 };
