@@ -1,0 +1,19 @@
+// Last updated: 11/2/2025, 10:32:38 PM
+class Solution {
+public:
+    int numSquares(int n) {
+        vector<int>dp(n+1,INT_MAX);
+        dp[0]= 0;
+        for(int i=1;i<=n;i++) // our target
+        {
+            for(int j=1;j*j<=i;j++) // finding nearest square
+            {
+                if(i-j*j>=0)
+                {
+                    dp[i] = min(dp[i],1 + dp[i-j*j]);
+                }
+            }
+        }
+        return dp[n];
+    }
+};
